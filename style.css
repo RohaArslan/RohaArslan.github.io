@@ -4,23 +4,24 @@ body {
     padding: 0;
 }
 
+/* Fullscreen clock on the left, mirroring social icons on right */
 .dclock {
     position: absolute;
-    left: 6rem;
+    left: 2rem;
     top: 50%;
     transform: translateY(-50%);
     display: flex;
-    align-items: center;
-    gap: 0.5rem;
+    flex-direction: column;
+    gap: 3rem;
+    align-items: flex-start;
     font-family: 'Courier New', Courier, monospace;
 }
-
-.time-label {
-    font-size: 1.1rem;
-    color: #333;
+.dclock h3 {
     margin: 0;
+    font-size: 1.5rem;
+    font-weight:bold;
 }
-
+/* Individual elements (optional fine tuning) */
 .digital-clock {
     font-size: 1.2rem;
     background-color: #f0f0f0;
@@ -34,9 +35,14 @@ body {
     color: #555;
 }
 
+/* Dark mode adjustments */
 body.dark-mode .digital-clock {
     color: white;
     background-color: #222;
+}
+
+body.dark-mode .digital-date {
+    color: #ccc;
 }
 
 * {
@@ -74,13 +80,13 @@ nav {
     justify-content: space-between;
     align-items: center;
 }
-.dark-mode .header_page{
 
-background-color: black;
+.dark-mode .header_page {
+    background-color: black;
 }
+
 .nav-links {
     display: flex;
-   
     gap: 2rem;
     list-style: none;
     color: white;
@@ -88,12 +94,13 @@ background-color: black;
     padding: 0;
     justify-content: center;
     align-items: center;
-
 }
-.link-text{
+
+.link-text {
     color: black;
 }
-.dark-mode .link-text{
+
+.dark-mode .link-text {
     color: white;
 }
 
@@ -111,7 +118,6 @@ background-color: black;
     color: inherit;
 }
 
-
 .hero {
     height: 100vh;
     display: flex;
@@ -122,10 +128,12 @@ background-color: black;
     background: #fff;
     color: #000;
     font-size: 34px;
+    flex-direction: column;
 }
 
 .herosubtext {
     font-size: 34px;
+    margin-top: 0.5rem;
 }
 
 .social-icons {
@@ -138,9 +146,7 @@ background-color: black;
     gap: 1rem;
 }
 
-
 .hero span {
-  
     font-weight: bold;
     font-size: 2rem;
 }
@@ -157,9 +163,7 @@ background-color: black;
 }
 
 .about-text {
-
     padding-bottom: 10%;
-
 }
 
 .about-content {
@@ -168,14 +172,123 @@ background-color: black;
     flex-wrap: wrap;
     gap: 2rem;
     margin-top: 2rem;
-
 }
 
 .skills-icons img {
     height: 50px;
     margin: 0.5rem;
 }
+/* ===== Mini Game Section ===== */
+.mini-game {
+    text-align: center;
+    margin: 4rem 0;
+    padding: 2rem;
+    background-color: #ffffff;
+    color: #000;
+    border-radius: 12px;
+    transition: background-color 0.3s, color 0.3s;
+}
 
+.dark-mode .mini-game {
+    background-color: #040404;
+    color: #fff;
+}
+
+/* ===== Canvas ===== */
+.mini-game canvas {
+    background-color: #302626;
+    border: 2px solid #fff;
+    border-radius: 8px;
+    display: block;
+    margin: 1rem auto;
+    transition: background-color 0.3s, border-color 0.3s;
+}
+
+.dark-mode .mini-game canvas {
+    background-color: #0b0606;
+    border-color: #ccc;
+}
+
+/* ===== Headings & Text ===== */
+.mini-game h2 {
+    font-size: 2rem;
+    margin-bottom: 1rem;
+}
+
+.mini-game p {
+    font-size: 1rem;
+    margin-top: 0.5rem;
+    color: #555;
+    transition: color 0.3s;
+}
+
+.dark-mode .mini-game p {
+    color: #ccc;
+}
+
+/* ===== Game Buttons ===== */
+.game-buttons {
+    margin-top: 1rem;
+    display: flex;
+    justify-content: center;
+    gap: 1rem;
+}
+
+.game-buttons button,
+.touch-controls button {
+    padding: 0.5rem 1rem;
+    font-size: 1rem;
+    border: none;
+    border-radius: 8px;
+    cursor: pointer;
+    background-color: #f57c00;
+    color: #fff;
+    transition: background-color 0.2s, color 0.2s;
+}
+
+.game-buttons button:active,
+.touch-controls button:active {
+    background-color: #ff9800;
+}
+
+/* Dark mode for buttons */
+.dark-mode .game-buttons button,
+.dark-mode .touch-controls button {
+    background-color: #ff9800;
+    color: #000;
+}
+
+/* ===== Touch Controls ===== */
+.touch-controls {
+    margin: 1rem 0;
+    display: flex;
+    justify-content: center;
+    gap: 1rem;
+}
+
+.touch-controls button {
+    font-size: 1.5rem;
+    padding: 0.5rem 1rem;
+    border-radius: 8px;
+    border: none;
+    background-color: #ffffff;
+    color: #000;
+    cursor: pointer;
+    transition: background-color 0.2s, color 0.2s;
+}
+
+.touch-controls button:active {
+    background-color: #ff9800;
+}
+
+.dark-mode .touch-controls button {
+    background-color: #080808;
+    color: #fff;
+}
+
+.dark-mode .touch-controls button:active {
+    background-color: #ff9800;
+}
 .project-gallery {
     display: grid;
     grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
@@ -185,31 +298,31 @@ background-color: black;
 }
 
 .dark-mode .about {
-    background: blavk;
+    background: black;
     color: #ddd;
 }
 
 .project-card {
-   
     background: white;
     border-radius: 8px;
     overflow: hidden;
     box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
     transition: transform 0.3s ease;
     display: block;
-        text-decoration: none;
-        color: inherit;
+    text-decoration: none;
+    color: inherit;
 }
 
 .project-card:hover {
     transform: translateY(-5px);
 }
-.projects{
-        padding: 4rem 2rem;
-            text-align: center;
-            padding-bottom: 10%;
-          
+
+.projects {
+    padding: 4rem 2rem;
+    text-align: center;
+    padding-bottom: 10%;
 }
+
 .project-img {
     width: 100%;
     height: 200px;
@@ -240,12 +353,13 @@ background-color: black;
     background: black;
     color: #fff;
 }
-.project-title{
-padding: 4rem 2rem;
+
+.project-title {
+    padding: 4rem 2rem;
     text-align: center;
-   
     padding-bottom: 10%;
 }
+
 .project-links a {
     color: white;
     text-decoration: none;
@@ -279,7 +393,6 @@ padding: 4rem 2rem;
 
 .contact-info {
     background-color: #002b40;
-  
     color: white;
     padding: 2rem;
     flex: 1 1 300px;
@@ -291,7 +404,6 @@ padding: 4rem 2rem;
 
 .contact-form {
     background-color: #f57c00;
-
     padding: 2rem;
     flex: 1 1 300px;
     border-radius: 8px;
@@ -343,6 +455,7 @@ padding: 4rem 2rem;
     background: #1a1a1a;
     color: #eee;
 }
+
 .up path {
     width: 249px;
     height: 134px;
@@ -351,21 +464,68 @@ padding: 4rem 2rem;
     stroke: #000;
 }
 
-
 body.dark-mode .up path {
     stroke: white;
 }
-footer{
+
+footer {
     display: block;
     padding: 1%;
     justify-items: center;
 }
+
+/* Responsive tweaks */
+@media (max-width: 900px) {
+    .dclock {
+        left: 1rem;
+        gap: 0.7rem;
+    }
+
+    .digital-clock {
+        font-size: 1rem;
+        padding: 3px 6px;
+    }
+
+    .digital-date {
+        font-size: 0.9rem;
+    }
+}
+
 @media (max-width: 600px) {
     .dclock {
+        left: 1rem;
+        top: auto;
+        position: relative;
+        transform: none;
         flex-direction: column;
         align-items: flex-start;
-        left: 3vw;
-        top: 1rem;
+        gap: 0.5rem;
+        margin-bottom: 1rem;
+    }
+
+    .social-icons {
+        position: relative;
+        right: auto;
+        top: auto;
         transform: none;
+        flex-direction: row;
+        /* horizontal on mobile */
+        justify-content: center;
+        gap: 1rem;
+        margin-top: 1rem;
+    }
+
+    .hero {
+        font-size: 28px;
+    }
+
+    .herosubtext {
+        font-size: 24px;
+    }
+
+    .hero-content {
+        display: flex;
+        flex-direction: column;
+        align-items: center;
     }
 }

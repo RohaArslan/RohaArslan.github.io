@@ -1,19 +1,39 @@
 
 const navLinks = document.querySelector(".nav-links");
+const templateInbox = "template_214sv0s";      // YOUR actual template ID for inbox
+const templateReply = "template_3y8hej9";      // YOUR actual template ID for auto-reply
 
-function sendMessage(event) {
+const form = document.getElementById("form");
+const btn = document.getElementById("button");
+
+form.addEventListener("submit", function (event) {
   event.preventDefault();
-  const form = event.target;
-  const name = form.name.value;
-  const email = form.email.value;
-  const message = form.message.value;
+  btn.value = "Sending...";
 
-  console.log("Form submitted:", { name, email, message });
+  const serviceID = "service_6s712yf"; // Your EmailJS service ID
+  const publicKey = "9FnKIh0T6ilUWIQLT"; // Your public key
+
+  // Send to your inbox
+  emailjs.sendForm(serviceID, templateInbox, form, publicKey)
+    .then(() => {
+      // Send auto-reply to sender
+      return emailjs.sendForm(serviceID, templateReply, form, publicKey);
+    })
+    .then(() => {
+      btn.value = "📧 Send Message";
+      alert("✅ Message sent! The sender will also receive a confirmation email.");
+      form.reset();
+    })
+    .catch((err) => {
+      btn.value = "📧 Send Message";
+      console.error("❌ Failed to send message:", err);
+      alert("Oops, something went wrong. Try again later.");
+    });
+});
 
 
-  form.reset();
-  alert("Message sent!");
-}
+
+
 
 
 document.addEventListener("DOMContentLoaded", () => {
