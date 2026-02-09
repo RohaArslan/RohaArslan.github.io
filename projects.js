@@ -2,14 +2,14 @@
 const projects = [
   {
     title: "AROUQ-SERVER",
-    description: "Backend server for the blood donation app (Private repo).",
+    description: "Backend server for the blood donation app.",
     image: "assets/images/image.png",
-    codeLink: "https://github.com/RohaArslan/AROUQ-SERVER",
+    codeLink: "https://github.com/RohaArslan/AROUQ-server",
   },
   {
     title: "AROUQ-FRONTEND",
     description:
-      "Uber-style app for blood donations (TypeScript, Private repo).",
+      "Uber-style app for blood donations.",
     image: "assets/images/image.png",
     // demoLink: "#",
     codeLink: "https://github.com/RohaArslan/AROUQ-FRONTEND",
